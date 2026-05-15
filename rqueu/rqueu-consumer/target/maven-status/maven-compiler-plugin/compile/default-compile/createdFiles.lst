@@ -1,4 +1,5 @@
+org\rqueue\RqueuConsumerApplication.class
+org\rqueue\dto\EmailDTO.class
 org\rqueue\mailSender\EmailSender.class
 org\rqueue\config\WireMockInitializer.class
-org\rqueue\RqueuConsumerApplication.class
 org\rqueue\consumer\EmailConsumer.class

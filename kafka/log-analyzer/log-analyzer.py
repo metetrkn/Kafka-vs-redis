@@ -4,8 +4,8 @@ from collections import defaultdict
 import json
 import os
 
-STATE_FILE = 'state.json'
-TIME_REPORT_FILE = 'time_report.csv'
+STATE_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/kafka/log-analyzer/state.json'
+TIME_REPORT_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/kafka/log-analyzer/time_report.csv'
 
 def get_report_id():
     if not os.path.exists(STATE_FILE):
@@ -136,4 +136,4 @@ def analyze_logs_to_csv(input_file, output_file):
 
 if __name__ == "__main__":
     analyze_logs_to_csv('C:\\Users\\metet\\Desktop\\microservice-kafka-rqueue-mail-tests\\kafka\\kafkaConsumer\\logs\\email-consumer.log',
-                        'log_report.csv')
+                        'C:\\Users\\metet\\Desktop\\microservice-kafka-rqueue-mail-tests\\kafka\\log-analyzer\\log_report.csv')

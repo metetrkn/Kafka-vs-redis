@@ -6,8 +6,8 @@ cd /d "%~dp0"
 
 echo Running log analysis...
 :: Navigate up one directory and into log-analyzer to execute scripts
-python "..\log-analyzer\log-analyzer.py"
-python "..\log-analyzer\visualize.py"
+python "C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\kafka\log-analyzer\log-analyzer.py"
+python "C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\kafka\log-analyzer\visualize.py"
 
 echo.
 echo Analysis complete.

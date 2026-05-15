@@ -1,4 +1,5 @@
-C:\Users\mete\Desktop\staj\rqueue\rqueu-consumer\src\main\java\org\rqueue\config\WireMockInitializer.java
-C:\Users\mete\Desktop\staj\rqueue\rqueu-consumer\src\main\java\org\rqueue\consumer\EmailConsumer.java
-C:\Users\mete\Desktop\staj\rqueue\rqueu-consumer\src\main\java\org\rqueue\mailSender\EmailSender.java
-C:\Users\mete\Desktop\staj\rqueue\rqueu-consumer\src\main\java\org\rqueue\RqueuConsumerApplication.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer\src\main\java\org\rqueue\config\WireMockInitializer.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer\src\main\java\org\rqueue\consumer\EmailConsumer.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer\src\main\java\org\rqueue\dto\EmailDTO.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer\src\main\java\org\rqueue\mailSender\EmailSender.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer\src\main\java\org\rqueue\RqueuConsumerApplication.java

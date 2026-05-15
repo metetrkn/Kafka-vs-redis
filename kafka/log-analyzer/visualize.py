@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # --- PRE-PROCESSING FOR MAILS GRAPH ---
-df = pd.read_csv('log_report.csv')
+df = pd.read_csv('C://Users//metet//Desktop//microservice-kafka-rqueue-mail-tests//kafka//log-analyzer//log_report.csv')
 df['consumer_label'] = df['topic'].apply(lambda x: x.split('-')[0].capitalize()) + ": " + df['consumer'].astype(str)
 df_agg = df.groupby(['report_id', 'topic']).agg({
     'max_execution_time_(s)': 'max',
@@ -68,4 +68,11 @@ ax3.legend(bbox_to_anchor=(1.0, 1.0), loc='upper left')
 
 # --- 4. SHOW THE PLOT ---
 plt.tight_layout()  
-plt.show()          
+
+# --- SAVE THE PLOT ---
+save_path = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/kafka/log-analyzer/report.png'
+plt.savefig(save_path, dpi=300) # dpi=300 ensures high quality for reports
+print(f"Plot successfully saved to: {save_path}")
+
+# Optional: Close the plot to free up memory
+plt.close()      

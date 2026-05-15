@@ -1,0 +1,7 @@
+report_id,subject,concurrency,avg_time(sc),max_time(sc),total_mails,total_errors
+0,VIP,5-10,0.41,0.56,25,0
+0,STANDARD,1-2,12.63,25.20,250,0
+1,VIP,5-10,1.03,1.92,50,1
+1,STANDARD,1-2,32.63,9747.15,501,1
+2,VIP,5-10,0.99,1.92,75,2
+2,STANDARD,1-2,26.05,9747.15,751,2

@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RqueuConsumerApplication {
 
     public static final AtomicInteger messageCounter = new AtomicInteger(0);
-    public static final int TOTAL_EXPECTED_MESSAGES = 550;
+    public static final int TOTAL_EXPECTED_MESSAGES = 275;
 
     public static void main(String[] args) {
         SpringApplication.run(RqueuConsumerApplication.class, args);

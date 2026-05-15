@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('log_report.csv')
+df = pd.read_csv(r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/log-eval/log_report_rqueue.csv')
 
 # --- PRE-PROCESSING ---
 df['subject'] = df['subject'].replace({'STANDARD': 'STD'})
@@ -75,4 +75,10 @@ sns.despine(left=True, bottom=True)
 plt.tight_layout()
 plt.subplots_adjust(top=0.9, hspace=0.5, wspace=0.2) 
 
-plt.show()
+# --- SAVE THE PLOT ---
+save_path = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/log-eval/report.png'
+plt.savefig(save_path, dpi=300) # dpi=300 ensures high quality for reports
+print(f"Plot successfully saved to: {save_path}")
+
+# Optional: Close the plot to free up memory
+plt.close()      

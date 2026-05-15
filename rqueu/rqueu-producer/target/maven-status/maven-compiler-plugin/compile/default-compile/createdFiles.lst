@@ -1,0 +1,4 @@
+org\rqueue\dto\EmailDTO.class
+org\rqueue\enums\Subject.class
+org\rqueue\RqueuApplication.class
+org\rqueue\producer\RqueueProducerRunner.class

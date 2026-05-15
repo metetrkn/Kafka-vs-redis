@@ -4,9 +4,9 @@ from collections import defaultdict
 import json
 import os
 
-STATE_FILE = 'state.json'
+STATE_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/log-eval/state.json'
 INPUT_LOG_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/rqueu-consumer/logs/email-consumer.log'
-OUTPUT_CSV_FILE = 'log_report.csv'
+OUTPUT_CSV_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/log-eval/log_report_rqueue.csv'
 
 def get_report_id():
     """Manage the report_id counter in a JSON state file."""

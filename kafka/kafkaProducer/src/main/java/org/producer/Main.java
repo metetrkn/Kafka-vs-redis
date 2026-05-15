@@ -21,8 +21,8 @@ public class Main {
             ExecutorService executor = Executors.newFixedThreadPool(2);
 
             // Both threads work simultaneously, 2nd parameter is number of mails per topic
-            executor.submit(() -> sendBatch(producer, "high-priority-mails", 50));
-            executor.submit(() -> sendBatch(producer, "low-priority-mails", 500));
+            executor.submit(() -> sendBatch(producer, "high-priority-mails", 25));
+            executor.submit(() -> sendBatch(producer, "low-priority-mails", 250));
 
             executor.shutdown();
             executor.awaitTermination(1, TimeUnit.HOURS);

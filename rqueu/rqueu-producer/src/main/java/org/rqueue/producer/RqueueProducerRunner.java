@@ -39,7 +39,7 @@ public class RqueueProducerRunner implements CommandLineRunner {
 
         executor.submit(() -> {
             try {
-                sendOneByOne(HIGH_PRIORITY_QUEUE, 50, Subject.VIP.name());
+                sendOneByOne(HIGH_PRIORITY_QUEUE, 25, Subject.VIP.name());
             } catch (Exception e) {
                 log.error("Error in High Priority", e);
             }
@@ -47,7 +47,7 @@ public class RqueueProducerRunner implements CommandLineRunner {
 
         executor.submit(() -> {
             try {
-                sendOneByOne(LOW_PRIORITY_QUEUE, 500, Subject.STANDARD.name());
+                sendOneByOne(LOW_PRIORITY_QUEUE, 250, Subject.STANDARD.name());
             } catch (Exception e) {
                 log.error("Error in Low Priority", e);
             }

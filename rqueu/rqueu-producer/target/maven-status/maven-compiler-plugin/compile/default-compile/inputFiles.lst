@@ -1,3 +1,4 @@
-C:\Users\mete\Desktop\staj\rqueue\rqueu-producer\src\main\java\org\rqueu\dto\EmailDTO.java
-C:\Users\mete\Desktop\staj\rqueue\rqueu-producer\src\main\java\org\rqueu\producer\RqueueProducerRunner.java
-C:\Users\mete\Desktop\staj\rqueue\rqueu-producer\src\main\java\org\rqueu\RqueuApplication.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-producer\src\main\java\org\rqueue\dto\EmailDTO.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-producer\src\main\java\org\rqueue\enums\Subject.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-producer\src\main\java\org\rqueue\producer\RqueueProducerRunner.java
+C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-producer\src\main\java\org\rqueue\RqueuApplication.java

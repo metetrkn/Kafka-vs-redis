@@ -40,7 +40,7 @@ public class Main {
     private static final List<KafkaEmailConsumer> activeConsumers = new ArrayList<>();
 
     public static final AtomicInteger messageCounter = new AtomicInteger(0);
-    public static final int TOTAL_EXPECTED_MESSAGES = 550;
+    public static final int TOTAL_EXPECTED_MESSAGES = 275;
 
     public static void main(String[] args) throws Exception {
         configureWireMock();
