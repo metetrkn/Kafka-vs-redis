@@ -5,7 +5,7 @@ import json
 import os
 
 STATE_FILE = 'state.json'
-INPUT_LOG_FILE = r'C:/Users/mete/Desktop/staj/rqueue/rqueu-consumer/logs/email-consumer.log'
+INPUT_LOG_FILE = r'C:/Users/metet/Desktop/microservice-kafka-rqueue-mail-tests/rqueu/rqueu-consumer/logs/email-consumer.log'
 OUTPUT_CSV_FILE = 'log_report.csv'
 
 def get_report_id():

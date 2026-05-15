@@ -33,6 +33,8 @@ public class KafkaEmailConsumer implements Runnable {
     private final AtomicBoolean running = new AtomicBoolean(true);
     private KafkaConsumer<String, String> consumer;
 
+
+
     public KafkaEmailConsumer(String topic, String groupId, int consumerIndex,
                               ExecutorService emailExecutor, int batchSize, long pollDurationMs) {
         this.topic = topic;
@@ -68,7 +70,6 @@ public class KafkaEmailConsumer implements Runnable {
             while (running.get()) {
                 ConsumerRecords<String, String> records;
                 try {
-                    // USE DYNAMIC WAIT TIME HERE
                     records = consumer.poll(Duration.ofMillis(pollDurationMs));
                 } catch (WakeupException e) { continue; }
 

@@ -1,6 +1,5 @@
 package org.rqueue.producer;
 
-import org.sharedLib.EmailDTO;
 import com.github.sonus21.rqueue.core.RqueueMessageEnqueuer;
 import com.github.sonus21.rqueue.core.RqueueEndpointManager;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import org.rqueue.enums.Subject;
+import org.rqueue.dto.EmailDTO;
 
 @Component
 @RequiredArgsConstructor
@@ -39,7 +39,7 @@ public class RqueueProducerRunner implements CommandLineRunner {
 
         executor.submit(() -> {
             try {
-                sendOneByOne(HIGH_PRIORITY_QUEUE, 1000, Subject.VIP.name());
+                sendOneByOne(HIGH_PRIORITY_QUEUE, 50, Subject.VIP.name());
             } catch (Exception e) {
                 log.error("Error in High Priority", e);
             }
@@ -47,7 +47,7 @@ public class RqueueProducerRunner implements CommandLineRunner {
 
         executor.submit(() -> {
             try {
-                sendOneByOne(LOW_PRIORITY_QUEUE, 10000, Subject.STANDARD.name());
+                sendOneByOne(LOW_PRIORITY_QUEUE, 500, Subject.STANDARD.name());
             } catch (Exception e) {
                 log.error("Error in Low Priority", e);
             }

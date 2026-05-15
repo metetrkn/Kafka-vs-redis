@@ -2,6 +2,7 @@ package org.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 public class EmailSender {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
-    private static final String WIREMOCK_URL = "http://localhost:8080/v1/send-email";
+    private static final String WIREMOCK_URL = "http://localhost:9090/v1/send-email";
     private static final String API_KEY = "api:key-fake";
     private static final String FROM_EMAIL = "sender@example.com";
 
@@ -69,16 +70,27 @@ public class EmailSender {
                 .thenAccept(response -> {
                     if (response.statusCode() == 200) {
                         long sentTime = System.currentTimeMillis();
-
+                        int currentCount = Main.messageCounter.incrementAndGet();
                         logger.info("Topic: {} | Consumer: {} | Sent to: {} | Created: {} | Sent: {}",
                                 email.topic, email.consumerId, email.to, email.creationTime, sentTime);
-                    } else {
-                        logger.error("Failed: {} | Status: {}", email.to, response.statusCode());
+
+                        if (currentCount == Main.TOTAL_EXPECTED_MESSAGES) {
+                            try {
+                                // Run the second script
+                                Runtime.getRuntime().exec("cmd /c start script-2.bat");
+
+                                // Small buffer to ensure the OS registers the process start
+                                Thread.sleep(1000);
+
+                                // Kill the Java process
+                                System.exit(0);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
                     }
-                })
-                .exceptionally(ex -> {
-                    logger.error("Error sending to {}: {}", email.to, ex.getMessage());
-                    return null;
                 });
     }
 

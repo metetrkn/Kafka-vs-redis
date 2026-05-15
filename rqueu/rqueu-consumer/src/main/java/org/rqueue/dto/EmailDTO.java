@@ -1,4 +1,4 @@
-package org.sharedLib;
+package org.rqueue.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,11 +1,13 @@
 package org.rqueue.mailSender;
 
-import org.sharedLib.EmailDTO;
+import org.rqueue.dto.EmailDTO;
+import org.rqueue.RqueuConsumerApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -63,7 +65,24 @@ public class EmailSender {
                                 emailDto.getSubject(),
                                 lag
                         );
-          
+
+                        int currentCount = RqueuConsumerApplication.messageCounter.incrementAndGet();
+                        if (currentCount == RqueuConsumerApplication.TOTAL_EXPECTED_MESSAGES) {
+                            try {
+                                // Run the second script
+                                Runtime.getRuntime().exec("cmd /c start script-2.bat");
+
+                                // Small buffer to ensure the OS registers the process start
+                                Thread.sleep(1000);
+
+                                // Kill the Java process
+                                System.exit(0);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
 
                     } else {
                         String errorMsg = String.format("Error, Mail Provider failed. Status: %d | Body: %s", response.statusCode(), response.body());

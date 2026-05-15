@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
 
@@ -27,7 +28,7 @@ public class Main {
     private static final long LOW_WAIT_MS     = 10000; // Low consumers querry frequency to kafka
 
     // --- CONSUMER COUNTS ---
-    private static final int HIGH_WORKERS = 6;
+    private static final int HIGH_WORKERS = 4;
     private static final int LOW_WORKERS  = 1;
     private static final int CONSUMER_POOL  = HIGH_WORKERS + LOW_WORKERS;
 
@@ -37,6 +38,9 @@ public class Main {
 
     private static final ExecutorService consumerRunnerPool = Executors.newFixedThreadPool(CONSUMER_POOL);
     private static final List<KafkaEmailConsumer> activeConsumers = new ArrayList<>();
+
+    public static final AtomicInteger messageCounter = new AtomicInteger(0);
+    public static final int TOTAL_EXPECTED_MESSAGES = 550;
 
     public static void main(String[] args) throws Exception {
         configureWireMock();
@@ -103,7 +107,7 @@ public class Main {
 
             java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
             java.net.http.HttpRequest request = java.net.http.HttpRequest.newBuilder()
-                    .uri(java.net.URI.create("http://localhost:8080/__admin/mappings"))
+                    .uri(java.net.URI.create("http://localhost:9090/__admin/mappings"))
                     .header("Content-Type", "application/json")
                     .POST(java.net.http.HttpRequest.BodyPublishers.ofString(jsonPayload))
                     .build();

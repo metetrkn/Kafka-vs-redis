@@ -24,7 +24,7 @@ public class WireMockInitializer {
     public final EmailConsumer emailConsumer;
 
     private static final Logger logger = LoggerFactory.getLogger(WireMockInitializer.class);
-    private static final String WIREMOCK_ADMIN_URL = "http://localhost:8080/__admin/mappings";
+    private static final String WIREMOCK_ADMIN_URL = "http://localhost:9090/__admin/mappings";
 
     // 1. Inject the Rqueue Container so we can control it
     private final RqueueMessageListenerContainer rqueueContainer;

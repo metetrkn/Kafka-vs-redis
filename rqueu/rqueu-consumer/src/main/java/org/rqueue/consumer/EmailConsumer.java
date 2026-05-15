@@ -1,7 +1,7 @@
 package org.rqueue.consumer;
 
 import org.rqueue.mailSender.EmailSender;
-import org.sharedLib.EmailDTO;
+import org.rqueue.dto.EmailDTO;
 import com.github.sonus21.rqueue.annotation.RqueueListener;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
