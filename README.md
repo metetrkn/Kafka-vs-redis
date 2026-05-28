@@ -5,6 +5,20 @@
 - The project consists of two main parts: kafka/ and rqueue/, each containing its own test cases, reporting, documentation, codebase, and related materials.
 - This README.md provides documentation for both Kafka and RQueue, while each subproject also includes its own README.md file within its respective folder.
 
+## Overall Architecture
+The project includes a remote orchestration layer to trigger test runs and visualize results, connecting a cloud-based web interface with the local testing environment.
+
+![Overall System Architecture](overall-schema.png)
+
+### Workflow
+1.  **Test Execution Trigger**: A user interacts with a web application hosted on AWS Elastic Beanstalk (EBS) to start a test run.
+2.  **Request Tunneling**: The web app sends an HTTP POST request to the local environment via an `ngrok` public bridge. This allows the cloud application to securely communicate with the local machine.
+3.  **Local Worker**: A `Node.js` worker on the local machine listens for incoming requests from ngrok.
+4.  **Script Execution**: Upon receiving a request, the Node.js worker executes `script-main.bat`, which initiates the message producers (for either Kafka or RQueue).
+5.  **Benchmarking Run**: The producers and consumers for the selected message broker (Kafka or RQueue/Redis) run the benchmark test.
+6.  **Log Analysis**: After the test completes, `script-2.bat` is executed, which runs the Python log analysis application (`PYTHON APP ANALYS`).
+7.  **Result Visualization**: The Python script processes the logs, generates analysis data, and sends it back as an HTTP response to the AWS web application, where the results are visualized for the user.
+
 ---
 
 <br><br>

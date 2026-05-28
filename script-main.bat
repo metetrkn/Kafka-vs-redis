@@ -1,20 +1,20 @@
 @echo off
 setlocal
 
-:: 1. Start rqueue-consumer and KEEP window open
-start "rqueu-consumer" cmd /k "cd /d C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-consumer && mvn spring-boot:run"
+:: 1. Start Rqueue consumer and keep the window open
+start "rqueue-consumer" cmd /k "cd /d C:\Users\metet\Desktop\aws-version\rqueu\rqueu-consumer-new && mvn spring-boot:run"
 
-:: 2. Start kafka-consumer and KEEP window open
-start "kafkaConsumer" cmd /k "cd /d C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\kafka\kafkaConsumer && mvn package dependency:copy-dependencies -DskipTests && java -cp "target/classes;target/dependency/*" org.consumer.Main"
+:: 2. Start Kafka consumer and keep the window open
+start "kafka-consumer" cmd /k "cd /d C:\Users\metet\Desktop\aws-version\kafka\kafkaConsumer-new && mvn clean compile exec:java -Dexec.mainClass=org.consumer.Main"
 
-:: Wait for consumers to fully initialize
-timeout /t 10 /nobreak
+:: Wait 15 seconds for consumers to initialize
+timeout /t 20 /nobreak
 
-:: 3. Start rqueue-producer (closes normally after execution)
-start "rqueue-producer" cmd /k "cd /d C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\rqueu\rqueu-producer && mvn spring-boot:run"
+:: 3. Start Rqueue producer (closes after execution)
+start "rqueue-producer" cmd /c "cd /d C:\Users\metet\Desktop\aws-version\rqueu\rqueu-producer-new && mvn spring-boot:run"
 
-:: 4. Start kafka-producer (closes normally after execution)
-start "kafka-producer" cmd /c "cd /d C:\Users\metet\Desktop\microservice-kafka-rqueue-mail-tests\kafka\kafkaProducer && mvn package dependency:copy-dependencies -DskipTests && java -cp "target/classes;target/dependency/*" org.producer.Main"
+:: 4. Start Kafka producer (closes after execution)
+start "kafka-producer" cmd /c "cd /d C:\Users\metet\Desktop\aws-version\kafka\kafkaProducer-new && mvn clean compile exec:java -Dexec.mainClass=org.producer.Main"
 
-echo All services triggered. Consumers will stay active.
+echo All services triggered. Consumers remain active.
 pause
